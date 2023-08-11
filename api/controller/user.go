@@ -2,6 +2,7 @@ package controller
 
 import (
 	"context"
+	"io"
 
 	"github.com/Asad2730/EventManagement/connect"
 	"github.com/Asad2730/EventManagement/model"
@@ -90,7 +91,9 @@ func GetUser(c *gin.Context) {
 		return
 	}
 
-	obj, err := connect.Downloader.Download(context.TODO(), nil, &s3.GetObjectInput{
+	var buf io.WriterAt
+
+	obj, err := connect.Downloader.Download(context.TODO(), buf, &s3.GetObjectInput{
 		Bucket: aws.String(BucketName),
 		Key:    aws.String(user.Id),
 	})
