@@ -18,7 +18,7 @@ var tableName = "Event"
 func Create(c *gin.Context) {
 
 	var event model.Event
-	event.Id = uuid.New().String()
+	event.Id = uuid.New()
 	if err := c.ShouldBindJSON(&event); err != nil {
 		c.JSON(400, err.Error())
 		return
