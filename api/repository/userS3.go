@@ -1,4 +1,4 @@
-package controller
+package repository
 
 import (
 	"context"
@@ -20,7 +20,7 @@ var (
 	BucketName = "userPic"
 )
 
-func CreateUser(c *gin.Context) {
+func CreateUserS3(c *gin.Context) {
 
 	var event model.User
 	event.Id = uuid.NewString()
@@ -60,7 +60,7 @@ func CreateUser(c *gin.Context) {
 	c.JSON(200, event)
 }
 
-func GetUser(c *gin.Context) {
+func GetUserS3(c *gin.Context) {
 
 	id := c.Param("id")
 

@@ -14,8 +14,11 @@ func main() {
 
 	r := gin.Default()
 
-	routes.EventsRoutes(r)
+	eventGroup := r.Group("/event")
+	userGroup := r.Group("/user")
 
+	routes.EventsRoutes(eventGroup)
+	routes.UserRoutes(userGroup)
 	r.Run()
 
 }
